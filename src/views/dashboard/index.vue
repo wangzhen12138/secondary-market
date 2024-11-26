@@ -1,14 +1,20 @@
 <template>
   <div class="dashboard-container">
     <div class="demo-image">
-      <div class="block" v-for="fit in fits" :key="fit">
-        <el-image style="width: 100px; height: 100px" :src="url" :fit="fit"></el-image>
-      </div>
+      <el-row>
+        <el-col :span="8">
+          <div class="grid-content bg-purple">
+            <div class="block" v-for="fit in fits" :key="fit">
+              <div class="dashboard-text">尊敬的 {{ name }} 您好</div>
+
+              <el-image style="width: 100px; height: 100px" :src="url" :fit="fit"></el-image>
+            </div>
+          </div>
+        </el-col>
+      </el-row>
+
     </div>
     <el-divider></el-divider>
-
-    <div class="dashboard-text">尊敬的 {{ name }} 您好</div>
-    
     <el-tabs v-model="activeName" @tab-click="handleClick">
       <el-tab-pane label="上架商品" name="first">
         <div class="lunch">
@@ -33,7 +39,8 @@
               </template>
             </el-table-column>
           </el-table>
-          <el-pagination class="pagenumber" :page-size="20" :pager-count="11" layout="prev, pager, next" :total="1000" @current-change="getPageNum">
+          <el-pagination class="pagenumber" :page-size="20" :pager-count="11" layout="prev, pager, next" :total="1000"
+            @current-change="getPageNum">
           </el-pagination>
         </div>
       </el-tab-pane>
@@ -144,7 +151,7 @@ export default {
     delclick(row) {
       delgood(row.id).then((res) => {
         this.$message('删除文章成功!');
-          this.$router.push('/example/table');
+        this.$router.push('/example/table');
       })
     },
     showstatus(data) {
@@ -252,8 +259,9 @@ export default {
   &-container {
     margin: 30px;
   }
+
   &-text {
-    font-size: 30px;
+    font-size: 24px;
     line-height: 46px;
   }
 }
