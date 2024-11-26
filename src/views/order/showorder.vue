@@ -1,27 +1,30 @@
 <template>
     <div>
-        <div v-show="this.state==1">
+        <div>
+            <show-article></show-article>
+        </div>
+        <div v-show="this.state == 1">
             <el-steps :active="1" align-center>
                 <el-step title="买家已锁定商品" description="买家已付款请卖家确定售货"></el-step>
                 <el-step title="买家已确定收货" description="买家已确定收到"></el-step>
                 <el-step title="卖家已确定收款" description="卖家已完成收款订单完成"></el-step>
             </el-steps>
         </div>
-        <div v-show="this.state==2">
+        <div v-show="this.state == 2">
             <el-steps :active="2" align-center>
                 <el-step title="买家已锁定商品" description="买家已付款请卖家确定售货"></el-step>
                 <el-step title="买家已确定收货" description="买家已确定收到"></el-step>
                 <el-step title="卖家已确定收款" description="卖家已完成收款订单完成"></el-step>
             </el-steps>
         </div>
-        <div v-show="this.state==3">
+        <div v-show="this.state == 3">
             <el-steps :active="3" align-center>
                 <el-step title="买家已锁定商品" description="买家已付款请卖家确定售货"></el-step>
                 <el-step title="买家已确定收货" description="买家已确定收到"></el-step>
                 <el-step title="卖家已确定收款" description="卖家已完成收款订单完成"></el-step>
             </el-steps>
         </div>
-        <div v-show="this.state==4">
+        <div v-show="this.state == 4">
             <el-steps :active="3" align-center>
                 <el-step title="买家已锁定商品" description="买家已付款请卖家确定售货"></el-step>
                 <el-step title="买家已确定收货" description="买家已确定收到"></el-step>
@@ -32,7 +35,7 @@
                 <el-step title="卖家通过" description="卖家通过"></el-step>
             </el-steps>
         </div>
-        <div v-show="this.state==5">
+        <div v-show="this.state == 5">
             <el-steps :active="3" align-center>
                 <el-step title="买家已锁定商品" description="买家已付款请卖家确定售货"></el-step>
                 <el-step title="买家已确定收货" description="买家已确定收到"></el-step>
@@ -44,7 +47,7 @@
             </el-steps>
         </div>
 
-        <div v-show="this.state==6">
+        <div v-show="this.state == 6">
             <el-steps :active="3" align-center>
                 <el-step title="买家已锁定商品" description="买家已付款请卖家确定售货"></el-step>
                 <el-step title="买家已确定收货" description="买家已确定收到"></el-step>
@@ -55,7 +58,7 @@
                 <el-step title="卖家拒绝通过" description="卖家拒绝通过"></el-step>
             </el-steps>
         </div>
-        <div v-show="this.state==7">
+        <div v-show="this.state == 7">
             <el-steps :active="3" align-center>
                 <el-step title="买家已锁定商品" description="买家已付款请卖家确定售货"></el-step>
                 <el-step title="买家已确定收货" description="买家已确定收到"></el-step>
@@ -65,12 +68,12 @@
                 <el-step title="买家申请退款" description="买家申请退款"></el-step>
                 <el-step title="卖家拒绝通过" description="卖家拒绝通过"></el-step>
             </el-steps>
-             <el-steps :active="1" align-center>
+            <el-steps :active="1" align-center>
                 <el-step title="申诉" description="买家申请退款"></el-step>
                 <el-step title="申诉成功" description="卖家拒绝通过"></el-step>
             </el-steps>
         </div>
-         <div v-show="this.state==8">
+        <div v-show="this.state == 8">
             <el-steps :active="3" align-center>
                 <el-step title="买家已锁定商品" description="买家已付款请卖家确定售货"></el-step>
                 <el-step title="买家已确定收货" description="买家已确定收到"></el-step>
@@ -80,12 +83,12 @@
                 <el-step title="买家申请退款" description="买家申请退款"></el-step>
                 <el-step title="卖家拒绝通过" description="卖家拒绝通过"></el-step>
             </el-steps>
-             <el-steps :active="2" align-center>
+            <el-steps :active="2" align-center>
                 <el-step title="申诉" description="买家申请退款"></el-step>
                 <el-step title="取消申诉" description="买家取消申诉"></el-step>
             </el-steps>
         </div>
-        <div v-show="this.state==9">
+        <div v-show="this.state == 9">
             <el-steps :active="3" align-center>
                 <el-step title="买家已锁定商品" description="买家已付款请卖家确定售货"></el-step>
                 <el-step title="买家已确定收货" description="买家已确定收到"></el-step>
@@ -95,12 +98,12 @@
                 <el-step title="买家申请退款" description="买家申请退款"></el-step>
                 <el-step title="卖家拒绝通过" description="卖家拒绝通过"></el-step>
             </el-steps>
-             <el-steps :active="2" align-center>
+            <el-steps :active="2" align-center>
                 <el-step title="申诉" description="买家申请退款"></el-step>
                 <el-step title="申诉被驳回" description="买家申诉被驳回"></el-step>
             </el-steps>
         </div>
-         <div v-show="this.state==0">
+        <div v-show="this.state == 0">
             <el-steps :active="3" align-center>
                 <el-step title="买家已锁定商品" description="买家已付款请卖家确定售货"></el-step>
                 <el-step title="买家已确定收货" description="买家已确定收到"></el-step>
@@ -110,56 +113,66 @@
                 <el-step title="买家申请退款" description="买家申请退款"></el-step>
                 <el-step title="卖家拒绝通过" description="卖家拒绝通过"></el-step>
             </el-steps>
-             <el-steps :active="2" align-center>
+            <el-steps :active="2" align-center>
                 <el-step title="申诉" description="买家申请退款"></el-step>
                 <el-step title="申诉成功" description="申诉成功"></el-step>
             </el-steps>
         </div>
-    
-    <el-button v-show="this.state==1" round icon="el-icon-edit-outline" @click="getgoods">收货</el-button>
-    <el-button v-show="this.state==2" round icon="el-icon-edit-outline" @click="getmoney">收款</el-button>
-    <el-button v-show="this.state==3" round icon="el-icon-edit-outline" @click="backgoods">退货</el-button>
-    <el-button v-show="this.state==4" round icon="el-icon-edit-outline" @click="outmoney">确定退货</el-button>
-    <el-button v-show="this.state==4" round icon="el-icon-edit-outline" @click="nooutmoney">拒绝</el-button>
-    <el-button v-show="this.state==6" round icon="el-icon-edit-outline" @click="sendadmin">申诉</el-button>
-    <el-button v-show="this.state===7" round icon="el-icon-edit-outline" @click="nosendadmin">{{this.state+" "+this.name+" "+this.store.name}}取消申诉</el-button>    
-    <el-button v-show="this.state==7" round icon="el-icon-edit-outline" @click="rejsendadmin">拒绝申诉</el-button>
-    <el-button v-show="this.state==7" round icon="el-icon-edit-outline" @click="passsendadmin">通过申诉</el-button>
-    <el-button v-show="this.state==8" round icon="el-icon-edit-outline" @click="sendadmin">申诉</el-button>
-    
-    
 
-    <div style="margin-top:10px"></div>
-    <div>
-        <!--style="margin-top:600px;"-->
+        <el-button v-show="this.state == 1" round icon="el-icon-edit-outline" @click="getgoods">收货</el-button>
+        <el-button v-show="this.state == 2" round icon="el-icon-edit-outline" @click="getmoney">收款</el-button>
+        <el-button v-show="this.state == 3" round icon="el-icon-edit-outline" @click="backgoods">退货</el-button>
+        <el-button v-show="this.state == 4" round icon="el-icon-edit-outline" @click="outmoney">确定退货</el-button>
+        <el-button v-show="this.state == 4" round icon="el-icon-edit-outline" @click="nooutmoney">拒绝</el-button>
+        <el-button v-show="this.state == 6" round icon="el-icon-edit-outline" @click="sendadmin">申诉</el-button>
+        <el-button v-show="this.state === 7" round icon="el-icon-edit-outline" @click="nosendadmin">{{ this.state + ""+this.name+" "+this.store.name}}取消申诉</el-button>
+        <el-button v-show="this.state == 7" round icon="el-icon-edit-outline" @click="rejsendadmin">拒绝申诉</el-button>
+        <el-button v-show="this.state == 7" round icon="el-icon-edit-outline" @click="passsendadmin">通过申诉</el-button>
+        <el-button v-show="this.state == 8" round icon="el-icon-edit-outline" @click="sendadmin">申诉</el-button>
+
+
 
         <div style="margin-top:10px"></div>
-        <el-drawer title="评论区" :visible.sync="drawer" :direction="direction" :before-close="handleClose" :model="rereviewdata">
-            <div style="margin-left:10px ;margin-bottom:10px" v-show="rereview">回复评论</div>
-            <div style="margin-left:10px ;margin-bo:ttom:10px" v-show="rereview">{{rereviewdata.reviewcontent}}</div>
-            <div style="margin-left:10px ;margin-bottom:10px" v-show="rereview">{{rereviewdata.reviewname}}</div>
-            <el-input type="textarea" placeholder="欢迎高质量的评论，低质量的评论将折叠" v-model="textarea" maxlength="150" rows="20" show-word-limit>
-            </el-input>
+        <div>
+            <!--style="margin-top:600px;"-->
+
             <div style="margin-top:10px"></div>
-            <el-button style="margin-left:10px" round @click="submitreview" icon="el-icon-s-opportunity">提交评论</el-button>
-            <el-button style="margin-left:10px" round @click="drawer = false" icon="el-icon-s-opportunity">取消评论</el-button>
-        </el-drawer>
+            <el-drawer title="评论区" :visible.sync="drawer" :direction="direction" :before-close="handleClose"
+                :model="rereviewdata">
+                <div style="margin-left:10px ;margin-bottom:10px" v-show="rereview">回复评论</div>
+                <div style="margin-left:10px ;margin-bottom:10px" v-show="rereview">{{ rereviewdata.reviewcontent }}</div>
+                <div style="margin-left:10px ;margin-bottom:10px" v-show="rereview">{{ rereviewdata.reviewname }}</div>
+                <el-input type="textarea" placeholder="欢迎高质量的评论，低质量的评论将折叠" v-model="textarea" maxlength="150" rows="20"
+                    show-word-limit>
+                </el-input>
+                <div style="margin-top:10px"></div>
+                <el-button style="margin-left:10px" round @click="submitreview"
+                    icon="el-icon-s-opportunity">提交评论</el-button>
+                <el-button style="margin-left:10px" round @click="drawer = false"
+                    icon="el-icon-s-opportunity">取消评论</el-button>
+            </el-drawer>
 
-        <el-collapse :v-model="reviewdata" v-for="(item,index) in reviewdata" :key="item.artid">
-            <div style="margin-left:50px; display:inline-block">{{item.reviewname+ "：" +item.reviewcontent}}</div>
-            <el-button style="margin-left:50px;display:inline-block" size="mini" type="info" icon="el-icon-message" @click="onRereview(item.reviewname,item.reviewcontent,item.id)" circle></el-button>
-            <el-collapse-item style="margin-left:50px" v-for="li in item.list" :key="li.id">
-                <div style="margin-left:50px; display:inline-block">{{li.reviewname +":"}}</div>
-                <div style="margin-left:50px; display:inline-block">{{li.reviewcontent}}</div>
-            </el-collapse-item>
-        </el-collapse>
+            <el-collapse :v-model="reviewdata" v-for="(item) in reviewdata" :key="item.artid">
+                <div style="margin-left:50px; display:inline-block">{{ item.reviewname + "：" + item.reviewcontent }}</div>
+                <el-button style="margin-left:50px;display:inline-block" size="mini" type="info" icon="el-icon-message"
+                    @click="onRereview(item.reviewname, item.reviewcontent, item.id)" circle></el-button>
+                <el-collapse-item style="margin-left:50px" v-for="li in item.list" :key="li.id">
+                    <div style="margin-left:50px; display:inline-block">{{ li.reviewname + ":" }}</div>
+                    <div style="margin-left:50px; display:inline-block">{{ li.reviewcontent }}</div>
+                </el-collapse-item>
+            </el-collapse>
 
-    </div>
+        </div>
 
     </div>
 </template>
 
 <script>
+// 引入组件
+import showarticle from '../showarticle/index.vue';
+
+// 注册组件
+
 import { state } from 'vuex';
 import axios from 'axios';
 // import { getlist } from "@/api/table.js";
@@ -169,12 +182,15 @@ import { getorderdetial, changeorder } from "@/api/order.js";
 
 import { mapState } from "vuex";
 export default {
+    components: {
+        'show-article': showarticle
+    },
     data() {
         return {
-            admin:'',
-            store:'',
-            name:'',
-            buyer:'',
+            admin: '',
+            store: '',
+            name: '',
+            buyer: '',
             state: "",
             articledata: {
                 articleType: '',
@@ -217,8 +233,8 @@ export default {
         }),
     },
     created() {
-        this.store=this.$store.getters;
-        this.admin=this.$store.admin;        
+        this.store = this.$store.getters;
+        this.admin = this.$store.admin;
         this.showdetial();
         this.getreviewlist();
         this.showorderdetial();
@@ -236,8 +252,8 @@ export default {
                 console.log("111");
                 console.log(res.data);
                 this.state = res.data.state;
-                this.name=res.data.goodsusername;
-                this.buyer=res.data.buyer;
+                this.name = res.data.goodsusername;
+                this.buyer = res.data.buyer;
             })
         },
         nosendadmin() {
@@ -261,7 +277,7 @@ export default {
                 });
             });
         },
-         rejsendadmin() {
+        rejsendadmin() {
             this.$confirm('是否拒绝用户申诉操作, 确定是否继续么?', '提示', {
                 confirmButtonText: '申诉',
                 cancelButtonText: '在考虑考虑',
@@ -282,7 +298,7 @@ export default {
                 });
             });
         },
-         passsendadmin() {
+        passsendadmin() {
             this.$confirm('是否通过用户申诉操作, 确定是否继续么?', '提示', {
                 confirmButtonText: '申诉',
                 cancelButtonText: '在考虑考虑',
@@ -303,7 +319,7 @@ export default {
                 });
             });
         },
-         sendadmin() {
+        sendadmin() {
             this.$confirm('是否申请管理员操作, 确定是否继续么?', '提示', {
                 confirmButtonText: '申诉',
                 cancelButtonText: '在考虑考虑',
@@ -331,7 +347,7 @@ export default {
                 type: 'warning'
             }).then(() => {
                 console.log(this.$route.query);
-                changeorder(this.$route.query.id,4).then((res) => {
+                changeorder(this.$route.query.id, 4).then((res) => {
                     this.$message({
                         type: '退款成功',
                         message: '收款成功!'
@@ -366,7 +382,7 @@ export default {
                 });
             });
         },
-         nooutmoney() {
+        nooutmoney() {
             this.$confirm('是否确认退款, 确定是否继续么?', '提示', {
                 confirmButtonText: '退款',
                 cancelButtonText: '在考虑考虑',
@@ -645,7 +661,7 @@ export default {
 
 </script>
 
-<style  scoped>
+<style scoped>
 .line {
     text-align: center;
 }
@@ -667,4 +683,3 @@ export default {
     text-align: center;
 }
 </style>
-

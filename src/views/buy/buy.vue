@@ -12,7 +12,7 @@
         <el-form-item label="手机号">
             <el-input v-model="form.phone"></el-input>
         </el-form-item>
-        <el-form-item label="收获地点">
+        <el-form-item label="收货地点">
             <el-input v-model="form.address"></el-input>
         </el-form-item>
         <el-form-item label="学校">

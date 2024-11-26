@@ -44,8 +44,15 @@
           </el-pagination>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="我购买的订单" name="second">
+      <el-tab-pane label="我购买的商品" name="second">
         <el-table :data="tableData" style="width: 100%" :row-class-name="tableRowClassName">
+          <el-table-column label="id" width="180">
+            <template slot-scope="scope">
+              <div>
+                {{scope.row.$index}}
+              </div>
+            </template>
+          </el-table-column>
           <el-table-column prop="id" label="id" width="180">
           </el-table-column>
           <el-table-column prop="goodsname" label="商品名" width="180">
@@ -78,7 +85,7 @@
           </el-table-column>
         </el-table>
       </el-tab-pane>
-      <el-tab-pane label="我卖出的订单" name="fourth">
+      <el-tab-pane label="我卖出的商品" name="fourth">
         <el-table :data="soldData" style="width: 100%" :row-class-name="tableRowClassName">
           <el-table-column prop="id" label="id" width="180">
           </el-table-column>
