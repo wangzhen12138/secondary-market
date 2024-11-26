@@ -1,27 +1,42 @@
 <template>
   <div>
     <div ref="articledata" :model="articledata">
-      <el-input type="textarea" autosize placeholder="给商品来一个标题" v-model="articledata.articletitle "></el-input>
-      <el-input type="textarea" autosize placeholder="购买商品时的价格" v-model="articledata.price "></el-input>
-      <el-input type="textarea" autosize placeholder="想要出售的价格" v-model="articledata.newprice "></el-input>
+      <el-form ref="form" :model="form" label-width="80px">
+        <el-form-item label="商品标题">
+          <el-input type="textarea" autosize placeholder="给商品来一个标题" v-model="articledata.articletitle"></el-input>
+        </el-form-item>
+        <el-form-item label="购买价格">
+          <el-input type="textarea" autosize placeholder="购买商品时的价格" v-model="articledata.price"></el-input>
+        </el-form-item>
+        <el-form-item label="想卖价格">
+          <el-input type="textarea" autosize placeholder="想要出售的价格" v-model="articledata.newprice"></el-input>
+        </el-form-item>
+        <el-form-item label="图片上传">
+          <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/"
+            :on-preview="handlePreview" :on-remove="handleRemove" :file-list="fileList" list-type="picture">
+            <el-button size="small" type="primary">点击上传</el-button>
+            <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+          </el-upload>
+        </el-form-item>
+        <el-form-item label="商品简介">
+          <el-input type="textarea" :autosize="{ minRows: 20, maxRows: 40 }" placeholder="请介绍一下商品"
+            v-model="articledata.articlecontent" class="textarea"></el-input>
+        </el-form-item>
+        <el-form-item>
+        </el-form-item>
+      </el-form>
       <div style="margin: 20px 0;"></div>
-      <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" :on-remove="handleRemove" :file-list="fileList" list-type="picture">
-        <el-button size="small" type="primary">点击上传</el-button>
-        <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
-      </el-upload>
-      <el-input type="textarea" :autosize="{ minRows: 20, maxRows: 40}" placeholder="请介绍一下商品" v-model="articledata.articlecontent " class="textarea"></el-input>
     </div>
-
     <div class="titleData">
       <el-form ref="articledata" :model="articledata.cateid" label-width="80px">
         <el-form-item label="商品分类">
           <template>
             <el-select v-model="articledata.cateid" placeholder="请选择">
-              <el-option v-for="item in cateData" :key="item.id" :label="item.label" :value="item.catename" :disabled="item.disabled">
+              <el-option v-for="item in cateData" :key="item.id" :label="item.label" :value="item.catename"
+                :disabled="item.disabled">
               </el-option>
             </el-select>
-        </template>
-        </el-form-item>
+          </template>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="onSubmit">立即提交</el-button>
@@ -42,7 +57,7 @@ import { catelist } from "@/api/cate.js";
 export default {
   data() {
     return {
-      fileList: [ { name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100' }],
+      fileList: [],
       articledata: {
         cateid: '',
         goodsname: '',
@@ -50,9 +65,9 @@ export default {
         goodsusername: "",
         price: "",
         newprice: "",
-        school:"",
+        school: "",
       },
-       cateData: [],
+      cateData: [],
 
     }
   },
@@ -64,12 +79,12 @@ export default {
     //与state中的名字相同,在template中可以直接使用name,age
   },
   created() {
-    if(!this.$route.query.id){
+    if (!this.$route.query.id) {
       this.showcatelist();
     }
     if (this.$route.query.id) {
       this.showdetial();
-     
+
     }
   },
   methods: {
@@ -104,8 +119,8 @@ export default {
       data.goodsusername = this.$store.getters.name;
       data.goodsname = this.articledata.articletitle;
       data.goodscontent = this.articledata.articlecontent;
-      data.cateid ="1";
-      data.school = this.$store.getters.school;      
+      data.cateid = "1";
+      data.school = this.$store.getters.school;
       data.status = 0;
       // data.goodspicture = this.fileList;
       console.log("------------------------");
@@ -119,13 +134,13 @@ export default {
         })
 
       } else {
-         addarticle(data).then((res) => {
+        addarticle(data).then((res) => {
           console.log("提交成功");
           this.$message('提交成功,快在文章列表中查看吧!');
           this.$router.push('/mine');
         })
-       
-       
+
+
       }
 
 
@@ -165,7 +180,7 @@ export default {
 
 </script>
 
-<style  scoped>
+<style scoped>
 .line {
   text-align: center;
 }
@@ -178,4 +193,3 @@ export default {
   margin-top: 402px;
 }
 </style>
-

@@ -468,7 +468,7 @@ export default {
                     callback: action => {
                         this.$message({
                             type: 'info',
-                            message: `再看看吧:`
+                            message: `请购买其他用户发布的商品`
                         });
                     }
                 });

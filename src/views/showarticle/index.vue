@@ -1,50 +1,71 @@
 <template>
   <div>
+    <el-form ref="form" :model="form" label-width="80px">
+      <el-form-item label="商品名称">
+        <h1 class="contentbox">{{ articledata.articletitle }}</h1>
+      </el-form-item>
+      <el-form-item label="内容">
+        <div class="content">
+          <div style="margin: 20px 0; "></div>
+          {{ articledata.articlecontent }}
+          <div style="margin: 20px 0; "></div>
+        </div>
+      </el-form-item>
+      <el-form-item label="当前访问量">
+        <div>{{ articledata.pageview }}</div>
+      </el-form-item>
+      <el-form-item label="原价">
+        <div>{{ articledata.price }}</div>
+      </el-form-item>
+      <el-form-item label="惊爆价">
+        <div>{{ articledata.newprice }}</div>
+      </el-form-item>
 
+      <el-form-item label="出售学校">
+        <div>{{ articledata.school }}</div>
+      </el-form-item>
+      <el-form-item label="作者">
+        <div>{{ articledata.goodsusername }}</div>
+      </el-form-item>
+    </el-form>
     <div ref="articledata" :model="articledata">
-      <h1 class="contentbox">{{articledata.articletitle}}</h1>
-      <div class="content">
-        <div style="margin: 20px 0; "></div>
-        {{articledata.articlecontent}}
-        <div style="margin: 20px 0; "></div>
-      </div>
-      <div style="margin: 20px 0; "></div>
-      <div>当前访问量{{articledata.pageview}}</div>
-      <div>原价{{articledata.price}}</div>
-      <div>惊爆价{{articledata.newprice}}</div>
-      <div>出售学校{{articledata.school}}</div>
-      <div>作者{{articledata.goodsusername}}</div>
+
       <div style="margin: 20px 0;"></div>
       <el-empty description="描述文字"></el-empty>
 
     </div>
     <div style="margin-top:10px"></div>
+
     <div>
       <!--style="margin-top:600px;"-->
+
       <el-button style="margin-left:10px" round @click="onbuy" icon="el-icon-s-opportunity">购买商品</el-button>
       <el-button type="info" plain>私信商家</el-button>
       <el-button round icon="el-icon-edit-outline" @click="onReview">评论</el-button>
       <el-button type="info" @click="outgoods">下架商品</el-button>
       <el-button type="info" @click="ongoods">上架商品</el-button>
-      
+
       <div style="margin-top:10px"></div>
-      <el-drawer title="评论区" :visible.sync="drawer" :direction="direction" :before-close="handleClose" :model="rereviewdata">
+      <el-drawer title="评论区" :visible.sync="drawer" :direction="direction" :before-close="handleClose"
+        :model="rereviewdata">
         <div style="margin-left:10px ;margin-bottom:10px" v-show="rereview">回复评论</div>
-        <div style="margin-left:10px ;margin-bo:ttom:10px" v-show="rereview">{{rereviewdata.reviewcontent}}</div>
-        <div style="margin-left:10px ;margin-bottom:10px" v-show="rereview">{{rereviewdata.reviewname}}</div>
-        <el-input type="textarea" placeholder="欢迎高质量的评论，低质量的评论将折叠" v-model="textarea" maxlength="150" rows="20" show-word-limit>
+        <div style="margin-left:10px ;margin-bottom:10px" v-show="rereview">{{ rereviewdata.reviewcontent }}</div>
+        <div style="margin-left:10px ;margin-bottom:10px" v-show="rereview">{{ rereviewdata.reviewname }}</div>
+        <el-input type="textarea" placeholder="欢迎高质量的评论，回复的评论将折叠" v-model="textarea" maxlength="150" rows="20"
+          show-word-limit>
         </el-input>
         <div style="margin-top:10px"></div>
         <el-button style="margin-left:10px" round @click="submitreview" icon="el-icon-s-opportunity">提交评论</el-button>
         <el-button style="margin-left:10px" round @click="drawer = false" icon="el-icon-s-opportunity">取消评论</el-button>
       </el-drawer>
 
-      <el-collapse :v-model="reviewdata" v-for="(item,index) in reviewdata" :key="item.artid">
-        <div style="margin-left:50px; display:inline-block">{{item.reviewname+ "：" +item.reviewcontent}}</div>
-        <el-button style="margin-left:50px;display:inline-block" size="mini" type="info" icon="el-icon-message" @click="onRereview(item.reviewname,item.reviewcontent,item.id)" circle></el-button>
+      <el-collapse :v-model="reviewdata" v-for="(item) in reviewdata" :key="item.artid">
+        <div style="margin-left:50px; display:inline-block">{{ item.reviewname + "：" + item.reviewcontent }}</div>
+        <el-button style="margin-left:50px;display:inline-block" size="mini" type="info" icon="el-icon-message"
+          @click="onRereview(item.reviewname, item.reviewcontent, item.id)" circle></el-button>
         <el-collapse-item style="margin-left:50px" v-for="li in item.list" :key="li.id">
-          <div style="margin-left:50px; display:inline-block">{{li.reviewname +":"}}</div>
-          <div style="margin-left:50px; display:inline-block">{{li.reviewcontent}}</div>
+          <div style="margin-left:50px; display:inline-block">{{ li.reviewname + ":" }}</div>
+          <div style="margin-left:50px; display:inline-block">{{ li.reviewcontent }}</div>
         </el-collapse-item>
       </el-collapse>
     </div>
@@ -56,7 +77,7 @@
 import { state } from 'vuex';
 import axios from 'axios';
 // import { getlist } from "@/api/table.js";
-import { addarticle, artdetial, updataArt, pageview, outoffgoods, ongoods} from "@/api/article.js";
+import { addarticle, artdetial, updataArt, pageview, outoffgoods, ongoods } from "@/api/article.js";
 import { addreview, getreviewlist, rereview } from "@/api/review.js";
 import { mapState } from "vuex";
 export default {
@@ -111,7 +132,7 @@ export default {
 
   },
   methods: {
-     ongoods() {
+    ongoods() {
       this.$confirm('是否要上架该商品, 确定是否继续么?', '提示', {
         confirmButtonText: '上架',
         cancelButtonText: '在考虑考虑',
@@ -165,7 +186,7 @@ export default {
           callback: action => {
             this.$message({
               type: 'info',
-              message: `再看看吧:`
+              message: `请购买其他用户发布的商品:`
             });
           }
         });
@@ -177,8 +198,8 @@ export default {
             id: this.$route.query.id,
           }
         });
-       
-        
+
+
       }
 
     },
@@ -302,12 +323,14 @@ export default {
         console.log(this.rereviewdata);
         rereview(rereviewdata).then((res) => {
           this.$message("回复评论成功")
+          window.location.reload();
         })
       } else {
         console.log('进行评论');
         addreview(data).then((res) => {
           this.$message("评论成功");
           this.drawer = false;
+          window.location.reload();
         })
       }
 
@@ -337,7 +360,7 @@ export default {
 
 </script>
 
-<style  scoped>
+<style scoped>
 .line {
   text-align: center;
 }
@@ -359,4 +382,3 @@ export default {
   text-align: center;
 }
 </style>
-
